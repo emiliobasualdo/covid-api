@@ -1,6 +1,18 @@
 # Argentine COVID-19 API
 
 This API uses the [Argentinian Ministry of Health (msal.gob.ar) dataset](http://datos.salud.gob.ar/dataset/covid-19-casos-registrados-en-la-republica-argentina)
+## TODO
+
+- Cuando el cron corre, bloquea la BD entonces choca con los requests que se hacen por los usuarios.
+- Se está usando Panda como intermediario entre el .csv y la bd al momento de subir la información a la bd. Ideal sería no usar panda y acelerar el proceso de inserción en la bd.
+- En el método de summary hay una query cruda que usa panda y usa Django. Sería ideal pasarlo a código de modelos.
+- Limpiar un poco los métodos de las views y el del servicios. Quedó medio feo, nos faltó tiempo.
+- Pasar a una bd que acepte múltiples pedidos: Sqlite se bloquea ante varios requests.
+- Hacer que la carga del csv sea incremental en vez de reemplazante. Esto reduciría muchísimo el tiempo que tarda el método update_data (tiempo actual 12 min promedio).
+- Estudiar la eficiencia de los índices y agregar mejores índices
+- Estudiar cuál sería el mejor chunksize para el bulk insert del csv a la bd
+- Agregar tests unitarios
+
 
 ## Installation
 
